@@ -59,7 +59,11 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdro
 .arrow{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;font-size:22px;color:#999;cursor:pointer;padding:10px;z-index:2}
 .arrow:hover{color:var(--ink)}
 .arrow.prev{left:6px}.arrow.next{right:6px}
-@media(max-width:760px){.slide{grid-template-columns:1fr}.slide .hph:last-child{display:none}.hph{aspect-ratio:4/3}}
+@media(max-width:760px){
+.slide{grid-template-columns:1fr;gap:6px}
+.hph{aspect-ratio:4/3.2}
+.slide .hph:last-child{display:grid;aspect-ratio:16/8}
+}
 
 /* collection row */
 .row{padding:44px 0 8px}
