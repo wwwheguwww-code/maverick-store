@@ -302,7 +302,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
     </div>
     <div class="fbottom">
       <img src="images/logo.png" alt="MAVERICK" onerror="this.style.display='none'">
-      <span class="c">© MAVERICK FOOTBALL ACADEMY — <a href="info.html#tokushoho" style="color:#8B8880">特定商取引法に基づく表記</a> ／ <a href="info.html#privacy" style="color:#8B8880">プライバシーポリシー</a></span>
+      <span class="c">© MAVERICK FOOTBALL ACADEMY — <a href="info.html#tokushoho" style="color:#8B8880">特定商取引法に基づく表記</a> ／ <a href="info.html#privacy" style="color:#8B8880">プライバシーポリシー</a> · <span id="ver">v1.0</span></span>
     </div>
   </div>
 </footer>
@@ -369,6 +369,7 @@ async function loadProducts(){
   const rc=document.getElementById("track-rec"); const recs=items.filter(x=>x.rec);
   if(rc&&recs.length)rc.innerHTML=recs.map(card).join("");
   const pc=document.getElementById("pcount"); if(pc)pc.textContent=String(items.length).padStart(2,"0")+" PRODUCTS";
+  if(window.__pmBind)window.__pmBind();
  }catch(e){console.warn("product sheet load failed:",e)}
 }
 loadProducts();
@@ -407,6 +408,11 @@ loadProducts();
   ov.classList.add("on");document.body.style.overflow="hidden";
  }
  function close(){ov.classList.remove("on");document.body.style.overflow=""}
+ function bind(){document.querySelectorAll(".prod").forEach(p=>{p.onclick=e=>{
+  const buy=e.target.closest(".buy");
+  if(buy&&!buy.classList.contains("dis")&&buy.getAttribute("href")&&buy.getAttribute("href")!=="#")return;
+  e.preventDefault();open(p)}})}
+ window.__pmBind=bind; bind();
  document.addEventListener("click",e=>{
   const buy=e.target.closest(".buy");
   if(buy&&!buy.classList.contains("dis")&&buy.getAttribute("href")&&buy.getAttribute("href")!=="#")return; // 本物のBUYは素通し
