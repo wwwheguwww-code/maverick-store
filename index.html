@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- ============================================================
   MAVERICK STORE — EC prototype v0.2（Reference: SOPH. / F.C.Real Bristol）
-  ■ 商品差し替え: <article class="prod"> をコピーして編集
+  ■ 商品差し替え: <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)"> をコピーして編集
   ■ 決済接続: BUYリンクの href に Stripe Payment Link を貼る
   ■ 画像: images/ に hero1.jpg hero2.jpg heroside.jpg p1〜p8.jpg look1.jpg news1.jpg logo-ink.png
   ■ 色・フォント: CSS「STORE設定」を書き換え
@@ -21,6 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>window.addEventListener('error',function(ev){try{var d=document.createElement('div');d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:999;background:#C0392B;color:#fff;font-size:11px;padding:6px 10px;font-family:monospace';d.textContent='JS ERROR: '+ev.message;(document.body||document.documentElement).appendChild(d)}catch(e){}});</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -171,7 +172,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
     <p class="rhead"><a href="#" class="en">MAVERICK | DROP 01 — FIRST COLLECTION</a></p>
     <div class="rail">
       <div class="track" id="track-drop">
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p1.jpg" alt="" onerror="this.remove()"></div>
           <p class="soon en">COMING SOON</p>
           <p class="pbrand">MAVERICK</p>
@@ -179,7 +180,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="price en">¥4,500</p>
           <a class="buy dis en" href="#">BUY</a>
         </article>
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p2.jpg" alt="" onerror="this.remove()"></div>
           <p class="soon en">COMING SOON</p>
           <p class="pbrand">MAVERICK</p>
@@ -187,7 +188,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="price en">¥4,500</p>
           <a class="buy dis en" href="#">BUY</a>
         </article>
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p3.jpg" alt="" onerror="this.remove()"></div>
           <p class="soon en">COMING SOON</p>
           <p class="pbrand">MAVERICK</p>
@@ -195,7 +196,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="price en">¥8,800</p>
           <a class="buy dis en" href="#">BUY</a>
         </article>
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p4.jpg" alt="" onerror="this.remove()"></div>
           <p class="soon en">COMING SOON</p>
           <p class="pbrand">MAVERICK</p>
@@ -203,7 +204,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="price en">¥1,800</p>
           <a class="buy dis en" href="#">BUY</a>
         </article>
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p5.jpg" alt="" onerror="this.remove()"></div>
           <p class="soon en">COMING SOON</p>
           <p class="pbrand">MAVERICK</p>
@@ -211,7 +212,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="price en">¥2,200</p>
           <a class="buy dis en" href="#">BUY</a>
         </article>
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p6.jpg" alt="" onerror="this.remove()"></div>
           <p class="soon en">COMING SOON</p>
           <p class="pbrand">MAVERICK</p>
@@ -232,28 +233,28 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
     <p class="rhead"><a href="#" class="en">RECOMMEND</a></p>
     <div class="rail">
       <div class="track" id="track-rec">
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p3.jpg" alt="" onerror="this.remove()"></div>
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">HEAVYWEIGHT HOODIE</p>
           <p class="price en">¥8,800</p>
           <a class="buy dis en" href="#">BUY</a>
         </article>
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p1.jpg" alt="" onerror="this.remove()"></div>
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">M LOGO TEE — WHITE</p>
           <p class="price en">¥4,500</p>
           <a class="buy dis en" href="#">BUY</a>
         </article>
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p4.jpg" alt="" onerror="this.remove()"></div>
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">GAME SOX (2P)</p>
           <p class="price en">¥1,800</p>
           <a class="buy dis en" href="#">BUY</a>
         </article>
-        <article class="prod">
+        <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p2.jpg" alt="" onerror="this.remove()"></div>
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">M LOGO TEE — BLACK</p>
@@ -302,7 +303,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
     </div>
     <div class="fbottom">
       <img src="images/logo.png" alt="MAVERICK" onerror="this.style.display='none'">
-      <span class="c">© MAVERICK FOOTBALL ACADEMY — <a href="info.html#tokushoho" style="color:#8B8880">特定商取引法に基づく表記</a> ／ <a href="info.html#privacy" style="color:#8B8880">プライバシーポリシー</a> · <span id="ver">v1.0</span></span>
+      <span class="c">© MAVERICK FOOTBALL ACADEMY — <a href="info.html#tokushoho" style="color:#8B8880">特定商取引法に基づく表記</a> ／ <a href="info.html#privacy" style="color:#8B8880">プライバシーポリシー</a> · <span id="ver">v1.1</span></span>
     </div>
   </div>
 </footer>
@@ -363,7 +364,7 @@ async function loadProducts(){
    const tag= soon?'<p class="soon en">COMING SOON</p>'
             : sold?'<p class="soon en" style="color:#C43B3B">SOLD OUT</p>':'';
    const dq=(x.desc||"").replace(/"/g,"&quot;");
-   return `<article class="prod" data-desc="${dq}" data-img2="${x.img2?("images/"+x.img2):""}"><div class="pimg">${soon?'<span class="badge en">DROP 01</span>':''}<img loading="lazy" src="images/${x.img}" alt="${x.n}" onerror="this.remove()"></div>${tag}<p class="pbrand">MAVERICK</p><p class="pname en">${x.n}</p><p class="price en">¥${x.p.toLocaleString()}</p>${btn}</article>`;
+   return `<article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)" data-desc="${dq}" data-img2="${x.img2?("images/"+x.img2):""}"><div class="pimg">${soon?'<span class="badge en">DROP 01</span>':''}<img loading="lazy" src="images/${x.img}" alt="${x.n}" onerror="this.remove()"></div>${tag}<p class="pbrand">MAVERICK</p><p class="pname en">${x.n}</p><p class="price en">¥${x.p.toLocaleString()}</p>${btn}</article>`;
   };
   const d=document.getElementById("track-drop"); if(d)d.innerHTML=items.map(card).join("");
   const rc=document.getElementById("track-rec"); const recs=items.filter(x=>x.rec);
@@ -413,6 +414,22 @@ loadProducts();
   if(buy&&!buy.classList.contains("dis")&&buy.getAttribute("href")&&buy.getAttribute("href")!=="#")return;
   e.preventDefault();open(p)}})}
  window.__pmBind=bind; bind();
+ window.__pmOpen=function(el,ev){
+  if(ev){const b=ev.target&&ev.target.closest?ev.target.closest(".buy"):null;
+   if(b&&!b.classList.contains("dis")&&b.getAttribute("href")&&b.getAttribute("href")!=="#")return;
+   ev.preventDefault&&ev.preventDefault();}
+  open(el);};
+ // タッチ端末用の保険（クリックが握り潰される環境向け）
+ let tx=0,ty=0;
+ document.addEventListener("touchstart",e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+ document.addEventListener("touchend",e=>{
+  const t=e.changedTouches[0];
+  if(Math.abs(t.clientX-tx)>12||Math.abs(t.clientY-ty)>12)return; // スワイプは無視
+  const el=document.elementFromPoint(t.clientX,t.clientY); if(!el)return;
+  const b=el.closest(".buy"); if(b&&!b.classList.contains("dis")&&b.getAttribute("href")&&b.getAttribute("href")!=="#")return;
+  const card=el.closest(".prod");
+  if(card&&!ov.classList.contains("on")){e.preventDefault();open(card)}
+ },{passive:false});
  document.addEventListener("click",e=>{
   const buy=e.target.closest(".buy");
   if(buy&&!buy.classList.contains("dis")&&buy.getAttribute("href")&&buy.getAttribute("href")!=="#")return; // 本物のBUYは素通し
