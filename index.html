@@ -80,7 +80,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdro
 .rail{position:relative}
 .track{display:grid;grid-auto-flow:column;grid-auto-columns:calc(25% - 15px);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}
 .track::-webkit-scrollbar{display:none}
-.prod{scroll-snap-align:start}
+.prod{scroll-snap-align:start;cursor:pointer}
 .pimg{aspect-ratio:1/1.08;background:#F5F5F3;background-size:cover;background-position:center;display:grid;place-items:center;color:#C4C4BE;font-size:11px;margin-bottom:14px;overflow:hidden}
 .pimg img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .4s}
 .prod:hover .pimg img{transform:scale(1.03)}
@@ -306,6 +306,29 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
   </div>
 </footer>
 
+<!-- 商品詳細モーダル -->
+<div class="pm-ov" id="pmOv" role="dialog" aria-modal="true">
+  <div class="pm">
+    <button class="pm-close" id="pmClose" aria-label="閉じる">×</button>
+    <div class="pm-imgs">
+      <div class="pm-main"><img id="pmImg" src="" alt=""></div>
+      <div class="pm-thumbs" id="pmThumbs" style="display:none">
+        <button id="pmT1" class="on"><img src="" alt=""></button>
+        <button id="pmT2"><img src="" alt=""></button>
+      </div>
+    </div>
+    <div class="pm-info">
+      <p class="pm-tag en" id="pmTag"></p>
+      <p class="pm-brand">MAVERICK</p>
+      <p class="pm-name en" id="pmName"></p>
+      <p class="pm-price en" id="pmPrice"></p>
+      <p class="pm-desc" id="pmDesc"></p>
+      <a class="pm-size en" href="info.html#size" target="_blank">SIZE GUIDE →</a>
+      <div class="pm-buybar" id="pmBuy"></div>
+    </div>
+  </div>
+</div>
+
 <script>
 // ===== 商品マスタ（Googleスプレッドシート）読み込み =====
 // スプレッドシートを「ウェブに公開(CSV)」したURLを下に貼ると、
@@ -327,7 +350,8 @@ async function loadProducts(){
   const items=rows.map(r=>({o:parseFloat(r[ix("表示順")])||99,n:(r[ix("商品名")]||"").trim(),
     p:parseInt(String(r[ix("価格")]).replace(/[^0-9]/g,""))||0,s:(r[ix("状態")]||"").trim(),
     img:(r[ix("画像")]||"").trim(),u:(r[ix("購入リンク")]||"").trim(),
-    rec:(r[ix("おすすめ")]||"").includes("○")}))
+    rec:(r[ix("おすすめ")]||"").includes("○"),
+    desc:(ix("説明")>-1?(r[ix("説明")]||"").trim():""),img2:(ix("画像2")>-1?(r[ix("画像2")]||"").trim():"")}))
    .filter(x=>x.n && x.s!=="非表示").sort((a,b)=>a.o-b.o);
   if(!items.length) return;
   const card=x=>{
@@ -337,7 +361,8 @@ async function loadProducts(){
             : `<a class="buy en" href="${x.u||"#"}" target="_blank" rel="noopener">BUY</a>`;
    const tag= soon?'<p class="soon en">COMING SOON</p>'
             : sold?'<p class="soon en" style="color:#C43B3B">SOLD OUT</p>':'';
-   return `<article class="prod"><div class="pimg">${soon?'<span class="badge en">DROP 01</span>':''}<img loading="lazy" src="images/${x.img}" alt="${x.n}" onerror="this.remove()"></div>${tag}<p class="pbrand">MAVERICK</p><p class="pname en">${x.n}</p><p class="price en">¥${x.p.toLocaleString()}</p>${btn}</article>`;
+   const dq=(x.desc||"").replace(/"/g,"&quot;");
+   return `<article class="prod" data-desc="${dq}" data-img2="${x.img2?("images/"+x.img2):""}"><div class="pimg">${soon?'<span class="badge en">DROP 01</span>':''}<img loading="lazy" src="images/${x.img}" alt="${x.n}" onerror="this.remove()"></div>${tag}<p class="pbrand">MAVERICK</p><p class="pname en">${x.n}</p><p class="price en">¥${x.p.toLocaleString()}</p>${btn}</article>`;
   };
   const d=document.getElementById("track-drop"); if(d)d.innerHTML=items.map(card).join("");
   const rc=document.getElementById("track-rec"); const recs=items.filter(x=>x.rec);
@@ -346,6 +371,51 @@ async function loadProducts(){
  }catch(e){console.warn("product sheet load failed:",e)}
 }
 loadProducts();
+
+// ===== 商品詳細モーダル =====
+(()=>{
+ const ov=document.getElementById("pmOv");
+ const $=id=>document.getElementById(id);
+ let cur={};
+ function open(card){
+  const img=card.querySelector(".pimg img");
+  const src=img?img.getAttribute("src"):"";
+  const name=(card.querySelector(".pname")||{}).textContent||"";
+  const price=(card.querySelector(".price")||{}).textContent||"";
+  const soonEl=card.querySelector(".soon");
+  const buyEl=card.querySelector(".buy");
+  const desc=card.dataset.desc||"DROP 01 アイテム。商品詳細は近日公開します。";
+  const img2=card.dataset.img2||"";
+  $("pmImg").src=src; $("pmName").textContent=name; $("pmPrice").textContent=price;
+  $("pmDesc").textContent=desc;
+  $("pmTag").textContent=soonEl?soonEl.textContent:"";
+  // サムネ（2枚目画像がある時だけ）
+  const th=$("pmThumbs");
+  if(img2){th.style.display="flex";
+   $("pmT1").querySelector("img").src=src; $("pmT2").querySelector("img").src=img2;
+   $("pmT1").onclick=()=>{$("pmImg").src=src;$("pmT1").classList.add("on");$("pmT2").classList.remove("on")};
+   $("pmT2").onclick=()=>{$("pmImg").src=img2;$("pmT2").classList.add("on");$("pmT1").classList.remove("on")};
+  }else th.style.display="none";
+  // BUYバー（カードの状態を引き継ぎ）
+  const bb=$("pmBuy");
+  if(buyEl&&buyEl.classList.contains("dis")){
+   bb.innerHTML=`<a class="buy dis en">${buyEl.textContent}</a>`;
+  }else if(buyEl){
+   bb.innerHTML=`<a class="buy en" href="${buyEl.getAttribute("href")||"#"}" target="_blank" rel="noopener">BUY — ${price}</a>`;
+  }else bb.innerHTML="";
+  ov.classList.add("on");document.body.style.overflow="hidden";
+ }
+ function close(){ov.classList.remove("on");document.body.style.overflow=""}
+ document.addEventListener("click",e=>{
+  const buy=e.target.closest(".buy");
+  if(buy&&!buy.classList.contains("dis")&&buy.getAttribute("href")&&buy.getAttribute("href")!=="#")return; // 本物のBUYは素通し
+  const card=e.target.closest(".prod");
+  if(card){e.preventDefault();open(card)}
+ });
+ $("pmClose").onclick=close;
+ ov.addEventListener("click",e=>{if(e.target===ov)close()});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+})();
 </script>
 <script>
 // ヒーロー自動カルーセル（4.5秒ごと・手動操作で一時停止）
