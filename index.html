@@ -92,8 +92,6 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdro
 .buy{display:inline-block;margin-top:9px;font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:.16em;border:1px solid var(--ink);padding:7px 18px;transition:background .2s,color .2s}
 .buy:hover{background:var(--ink);color:#fff}
 .buy.dis{border-color:var(--line);color:#BBB;pointer-events:none}
-.pview{display:inline-block;margin-left:8px;font-size:10px;font-weight:700;letter-spacing:.16em;border:1px solid var(--ink);padding:7px 16px;border-radius:99px;color:var(--ink);text-decoration:none}
-.pview:active{background:var(--ink);color:#fff}
 .rail .arrow{top:38%}
 @media(max-width:900px){.track{grid-auto-columns:calc(33.4% - 14px)}}
 @media(max-width:640px){.track{grid-auto-columns:calc(50% - 10px)}.rail .arrow{display:none}}
@@ -123,9 +121,9 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
 .pm-ov{position:fixed;inset:0;background:rgba(17,17,17,.46);z-index:90;display:none;align-items:center;justify-content:center;padding:18px}
 .pm-ov.on{display:flex}
 .pm{background:#fff;max-width:880px;width:100%;max-height:92svh;overflow:auto;position:relative;display:grid;grid-template-columns:1.05fr 1fr}
-.pm-close{position:sticky;top:0;justify-self:end;grid-column:2;font-size:26px;background:none;border:none;cursor:pointer;color:#111;z-index:3;line-height:1;padding:12px 16px;margin-bottom:-46px}
+.pm-close{position:absolute;top:6px;right:8px;font-size:26px;background:none;border:none;cursor:pointer;color:#111;z-index:3;line-height:1;padding:10px 14px}
 .pm-imgs{background:#F5F5F3;grid-row:1 / span 2}
-.pm-main{aspect-ratio:1/1.05;display:grid}
+.pm-main{aspect-ratio:1/1;display:grid}
 .pm-main img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .pm-thumbs{display:flex;gap:8px;padding:0 12px 12px}
 .pm-thumbs button{width:52px;height:52px;border:1px solid var(--line);background:#fff;padding:2px;cursor:pointer}
@@ -140,7 +138,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
 .pm-size{display:inline-block;margin-top:16px;font-family:var(--font-ui);font-size:10.5px;letter-spacing:.14em;border-bottom:1px solid var(--ink);text-decoration:none;align-self:flex-start}
 .pm-buybar{position:sticky;bottom:0;background:#fff;padding:14px 0 4px;margin-top:auto;border-top:1px solid var(--line)}
 .pm-buybar .buy{display:block;text-align:center;padding:14px;font-size:12px;border-radius:99px}
-@media(max-width:760px){.pm{grid-template-columns:1fr}.pm-imgs{grid-row:auto}.pm-close{grid-column:1;margin-bottom:-46px}.pm-main{aspect-ratio:1/1}.pm-info{padding:20px 20px 12px}}
+@media(max-width:760px){.pm{grid-template-columns:1fr}.pm-imgs{grid-row:auto}.pm-main{aspect-ratio:1/1}.pm-info{padding:20px 20px 12px}}
 
 </style>
 </head>
@@ -203,7 +201,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">M LOGO TEE — WHITE</p>
           <p class="price en">¥4,500</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
         <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p2.jpg" alt="" onerror="this.remove()"></div>
@@ -211,7 +209,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">M LOGO TEE — BLACK</p>
           <p class="price en">¥4,500</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
         <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p3.jpg" alt="" onerror="this.remove()"></div>
@@ -219,7 +217,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">HEAVYWEIGHT HOODIE</p>
           <p class="price en">¥8,800</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
         <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p4.jpg" alt="" onerror="this.remove()"></div>
@@ -227,7 +225,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">GAME SOX (2P)</p>
           <p class="price en">¥1,800</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
         <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p5.jpg" alt="" onerror="this.remove()"></div>
@@ -235,7 +233,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">DRILL TOWEL</p>
           <p class="price en">¥2,200</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
         <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p6.jpg" alt="" onerror="this.remove()"></div>
@@ -243,7 +241,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">STICKER PACK</p>
           <p class="price en">¥600</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
       </div>
       <button class="arrow prev" onclick="rail(this,-1)" aria-label="前へ">‹</button>
@@ -263,28 +261,28 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">HEAVYWEIGHT HOODIE</p>
           <p class="price en">¥8,800</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
         <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p1.jpg" alt="" onerror="this.remove()"></div>
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">M LOGO TEE — WHITE</p>
           <p class="price en">¥4,500</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
         <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p4.jpg" alt="" onerror="this.remove()"></div>
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">GAME SOX (2P)</p>
           <p class="price en">¥1,800</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
         <article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)">
           <div class="pimg"><img loading="lazy" src="images/p2.jpg" alt="" onerror="this.remove()"></div>
           <p class="pbrand">MAVERICK</p>
           <p class="pname en">M LOGO TEE — BLACK</p>
           <p class="price en">¥4,500</p>
-          <a class="buy dis en" href="#">BUY</a> <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a>
+          <a class="buy dis en" href="#">BUY</a>
         </article>
       </div>
       <button class="arrow prev" onclick="rail(this,-1)" aria-label="前へ">‹</button>
@@ -328,7 +326,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 80px;margin-top:20px}
     </div>
     <div class="fbottom">
       <img src="images/logo.png" alt="MAVERICK" onerror="this.style.display='none'">
-      <span class="c">© MAVERICK FOOTBALL ACADEMY — <a href="info.html#tokushoho" style="color:#8B8880">特定商取引法に基づく表記</a> ／ <a href="info.html#privacy" style="color:#8B8880">プライバシーポリシー</a> · <span id="ver">v2.0</span></span>
+      <span class="c">© MAVERICK FOOTBALL ACADEMY — <a href="info.html#tokushoho" style="color:#8B8880">特定商取引法に基づく表記</a> ／ <a href="info.html#privacy" style="color:#8B8880">プライバシーポリシー</a> · <span id="ver">v2.1</span></span>
     </div>
   </div>
 </footer>
@@ -390,7 +388,7 @@ async function loadProducts(){
    const tag= soon?'<p class="soon en">COMING SOON</p>'
             : sold?'<p class="soon en" style="color:#C43B3B">SOLD OUT</p>':'';
    const dq=(x.desc||"").replace(/"/g,"&quot;");
-   return `<article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)" data-desc="${dq}" data-img2="${x.img2?("images/"+x.img2):""}"><div class="pimg">${soon?'<span class="badge en">DROP 01</span>':''}<img loading="lazy" src="images/${x.img}" alt="${x.n}" onerror="this.remove()"></div>${tag}<p class="pbrand">MAVERICK</p><p class="pname en">${x.n}</p><p class="price en">¥${x.p.toLocaleString()}</p>${btn} <a class="pview en" href="javascript:void(0)" onclick="window.__pmOpen&&window.__pmOpen(this.closest('.prod'),event)">VIEW</a></article>`;
+   return `<article class="prod" onclick="window.__pmOpen&&window.__pmOpen(this,event)" data-desc="${dq}" data-img2="${x.img2?("images/"+x.img2):""}"><div class="pimg">${soon?'<span class="badge en">DROP 01</span>':''}<img loading="lazy" src="images/${x.img}" alt="${x.n}" onerror="this.remove()"></div>${tag}<p class="pbrand">MAVERICK</p><p class="pname en">${x.n}</p><p class="price en">¥${x.p.toLocaleString()}</p>${btn}</article>`;
   };
   const d=document.getElementById("track-drop"); if(d)d.innerHTML=items.map(card).join("");
   const rc=document.getElementById("track-rec"); const recs=items.filter(x=>x.rec);
